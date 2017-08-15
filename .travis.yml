@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+  - pip install django pillow coveralls
+script: python manage.py test
+after_success: coveralls
+# see http://www.lesinskis.com/travis_ci_django.html when migrating to non sqlite3 database
