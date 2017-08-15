@@ -3,7 +3,7 @@ The Menlo Atherton Coding website - Built with Django and Bootstrap
 
 ## Quickstart
 ### Prerequisites
-* [Python](https://www.python.org/downloads/) (>= 3.2)
+* [Python](https://www.python.org/downloads/) (>= 3.4)
 * [Virtualenv](http://virtualenvwrapper.readthedocs.io/en/stable/) (Optional)
 * [Django](https://www.djangoproject.com/)
 * [Pillow](https://pillow.readthedocs.io/en/4.2.x/)
@@ -15,7 +15,7 @@ The Menlo Atherton Coding website - Built with Django and Bootstrap
 * Open your web browser and navigate to localhost:3000
 
 ## Status
-WIP
+[![Build Status](https://travis-ci.org/MenloAthertonCoding/websitecore.svg?branch=master)](https://travis-ci.org/MenloAthertonCoding/websitecore)
 
 ## Contributing
 Fell free to contribute, but be sure to checkout our [contributing guidelines](https://github.com/menloAthertonCoding/websitecore/blob/master/CONTRIBUTING.md)
