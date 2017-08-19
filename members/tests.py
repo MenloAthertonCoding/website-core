@@ -12,6 +12,7 @@ class MemberModelTests(TestCase):
         cls.member = Member.objects.create(
             first_name='Test',
             last_name='Case 0',
+            email='example@example.com',
             website='www.djangoproject.com'
         )
 
@@ -21,15 +22,27 @@ class MemberModelTests(TestCase):
             Member.objects.create(
                 first_name=self.member.first_name,
                 last_name=self.member.last_name,
+                email=self.member.email,
                 website=self.member.website
             )
-    
-    def test_add_duplicate_member_names(self):
+
+    def test_add_duplicate_member_name(self):
         """Test whether a member with a duplicate name will raise an IntegrityError"""
         with self.assertRaises(IntegrityError):
             Member.objects.create(
                 first_name=self.member.first_name,
                 last_name=self.member.last_name,
+                email='example2@example.com',
+                website='www.github.com'
+            )
+
+    def test_add_duplicate_member_email(self):
+        """Test whether a member with a duplicate email will raise an IntegrityError"""
+        with self.assertRaises(IntegrityError):
+            Member.objects.create(
+                first_name=self.member.first_name,
+                last_name='Case 1',
+                email=self.member.email,
                 website='www.github.com'
             )
 
