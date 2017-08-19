@@ -1,0 +1,12 @@
+.content {
+    padding-top: 10vh;
+}
+
+.card {
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
