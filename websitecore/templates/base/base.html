@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include '../header.html' %}
+
+        <title>Home | Menlo Atherton Coding</title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    </head>
+
+    <body>
+        <!-- TOP NAVBAR -->
+        {% include '../navbar.html' %}
+
+        <!-- CONTENT -->
+        <section class="content" role="main">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-4 text-center">
+                        <h1 class="text-white">Welcome</h1>
+                        <span class="text-white">Masthead Coming soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        {% include '../footer.html' %}
+        <script>$('.nav-item').eq(0).addClass('active');</script>
+    </body>
+</html>
