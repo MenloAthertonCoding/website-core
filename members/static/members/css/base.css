@@ -16,7 +16,7 @@ h1 {
     font-size: 4rem;
 }
 
-h1,span {
+h1,h2,h3,h4,span {
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -54,4 +54,13 @@ h1,span {
 
 nav.navbar {
     box-shadow: 0px 1px 0px #fff;
+}
+
+.card {
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
