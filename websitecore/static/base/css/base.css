@@ -16,7 +16,7 @@ h1 {
     font-size: 4rem;
 }
 
-h1,span {
+h1,h2,h3,h4,span {
     font-family: 'Josefin Sans', sans-serif;
 }
 
