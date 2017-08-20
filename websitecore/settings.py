@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'members.apps.MembersConfig',
+    'register.apps.RegisterConfig',
     'base.apps.BaseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
