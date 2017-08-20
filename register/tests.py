@@ -10,19 +10,36 @@ class TeamModelTests(TestCase):
     @classmethod
     def setUpTestData(cls):
         """Sets up required database information for running tests"""
-        cls.team = Team.objects.create(name='Test Team')
+        cls.team = Team.objects.create(
+            name='Test Team',
+            school='School'
+        )
     
     def test_add_duplicate_team(self):
         """Test whether a duplicate team will raise an IntegrityError"""
         with self.assertRaises(IntegrityError):
-            Team.objects.create(name=self.team.name)
+            Team.objects.create(
+                name=self.team.name,
+                school=self.team.school
+            )
+    
+    def test_add_duplicate_team_name(self):
+        """Test whether a duplicate team will raise an IntegrityError"""
+        with self.assertRaises(IntegrityError):
+            Team.objects.create(
+                name=self.team.name,
+                school='School 1'
+            )
 
 class ContestantModelTests(TestCase):
 
     @classmethod
     def setUpTestData(cls):
         """Sets up required database information for running tests"""
-        cls.team = Team.objects.create(name='Test Team') # team declared above is destroyed
+        cls.team = Team.objects.create( # team declared above is destroyed
+            name='Test Team',
+            school='School'
+        )
 
         cls.contestant = Contestant.objects.create(
             first_name='Test',
