@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include '../header.html' %}
+
+        <title>Register | Menlo Atherton Coding</title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    </head>
+
+    <body>
+        <!-- TOP NAVBAR -->
+        {% include '../navbar.html' %}
+
+        <!-- CONTENT -->
+        <section id="members" class="content">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-sm-6">
+                        <h1 class="text-white text-center">Team Members</h1>
+                        <div class="row">
+                            <form action="" method="post">{% csrf_token %}
+                                <div class="text-white">
+                                    {{ team_form.non_field_errors }}
+                                    {{ team_form.errors }}
+                                    {% for field in team_form %}
+                                            {{ field.label_tag }} {{ field }} <br/>
+                                    {% endfor %}
+                                </div>
+
+                                {{ contestant_formset.management_form }}
+                                {% for form in contestant_formset.forms %}
+                                    <div class="text-white">
+                                        {{ form.non_field_errors }}
+                                        {{ form.errors }}
+                                        {% for field in form %}
+                                            {% if not field.is_hidden %}{{ field.label_tag }} {{ field }} <br/>{% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                                <p><input type="submit" value="Register" /></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <!-- {% include '../footer.html' %} -->
+        <script>$(document).ready(function(){$('.card').click(function(){window.open($(this).find('a').attr('href'),'_blank');});$('.nav-item').eq(1).addClass('active');});</script>
+    </body>
+</html>
