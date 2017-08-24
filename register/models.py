@@ -25,5 +25,5 @@ class Contestant(models.Model):
         return self.full_name
 
     class Meta:
-        unique_together = (('first_name', 'last_name'),)
+        unique_together = (('first_name', 'last_name', 'team'),)
         ordering = ('first_name',)
