@@ -1,19 +1,11 @@
-from django.views.generic import CreateView
 from django.shortcuts import reverse
 from django.forms import inlineformset_factory, modelform_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Team, Contestant
-# from .
 
-class TeamCreateView(CreateView):
-    template_name = 'register/form.html'
-    # form_class = TeamForm
-    # success = reverse('register.registered')
-
-def formset_dd(request):
+def team_create(request):
     TeamForm = modelform_factory(Team, fields='__all__')
     ContestantFormSet = inlineformset_factory(Team, Contestant, fields='__all__',
                                               max_num=3, min_num=1, can_delete=False)
@@ -23,10 +15,6 @@ def formset_dd(request):
         if not team_form.is_valid():
             return render(request, 'register/form.html', {'contestant_formset': contestant_formset,
                                                           'team_form': team_form})
-        # try:
-        #     Team.objects.get(name=team_form.cleaned_data['name'])
-        # except ObjectDoesNotExist:
-        #     team_form.add_error('name', 't')
         else:
             if not contestant_formset.is_valid():
                 return render(request, 'register/form.html', {

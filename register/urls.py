@@ -5,5 +5,5 @@ from . import views
 app_name = 'register'
 
 urlpatterns = [
-    url(r'^$', views.formset_dd, name='register'),
+    url(r'^$', views.team_create, name='register'),
 ]
