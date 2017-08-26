@@ -7,6 +7,8 @@
 
         {% load static %}
         <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'register/css/form.css' %}">
+        
     </head>
 
     <body>
@@ -18,28 +20,46 @@
             <div class="container">
                 <div class="row justify-content-sm-center">
                     <div class="col-sm-6">
-                        <h1 class="text-white text-center">Team Members</h1>
-                        <div class="row">
-                            <form action="" method="post">{% csrf_token %}
-                                <div class="text-white">
-                                    {{ team_form.non_field_errors }}
-                                    {{ team_form.errors }}
+                        <h1 class="text-white text-center">Register</h1>
+                        <form action="" method="post">{% csrf_token %}
+                            <table class="table bg-ma-dark">
+                                <thead>
+                                    <tr>
                                     {% for field in team_form %}
-                                            {{ field.label_tag }} {{ field }} <br/>
+                                        <td>
+                                            {{ field }}
+                                            {% for error in field.errors %}
+                                                <p class="error text-white">{{ error }}</p>
+                                            {% endfor %}
+                                            {% for error in field.non_field_errors %}
+                                                <p class="error text-white">{{ error }}</p>
+                                            {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                </div>
-
+                                    </tr>
+                                </thead>
                                 {{ contestant_formset.management_form }}
                                 {% for form in contestant_formset.forms %}
-                                    <div class="text-white">
-                                        {{ form.non_field_errors }}
-                                        {{ form.errors }}
+                                    <thead>
+                                        <tr>
                                         {% for field in form %}
-                                            {% if not field.is_hidden %}{{ field.label_tag }} {{ field }} <br/>{% endif %}
+                                        {% if not field.is_hidden %}
+                                                <td>
+                                                    {{ field }}
+                                                    {% for error in field.errors %}
+                                                        <p class="error text-white">{{ error }}</p>
+                                                    {% endfor %}
+                                                    {% for error in field.non_field_errors %}
+                                                        <p class="error text-white">{{ error }}</p>
+                                                    {% endfor %}
+                                                </td>
+                                            {% endif %}
                                         {% endfor %}
-                                    </div>
+                                    </tr>
+                                </thead>
                                 {% endfor %}
-                                <p><input type="submit" value="Register" /></p>
+                            </table>
+                                <p><input type="submit" class="btn btn-transparent" value="Register"/></p>
                             </form>
                         </div>
                     </div>
@@ -48,7 +68,7 @@
         </section>
 
         <!-- FOOTER -->
-        <!-- {% include '../footer.html' %} -->
+        {% include '../footer.html' %}
         <script>$(document).ready(function(){$('.card').click(function(){window.open($(this).find('a').attr('href'),'_blank');});$('.nav-item').eq(1).addClass('active');});</script>
     </body>
 </html>

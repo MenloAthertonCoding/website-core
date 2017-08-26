@@ -1,0 +1,20 @@
+.content {
+    padding-top: 10vh;
+}
+
+.table {
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.table thead td {
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.error {
+    margin-bottom: 0;
+}
+
+.btn {
+    float: right;
+}

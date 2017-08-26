@@ -1,14 +1,20 @@
 from django.shortcuts import reverse
-from django.forms import inlineformset_factory, modelform_factory
+from django.forms import inlineformset_factory, modelform_factory, TextInput
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Team, Contestant
 
 def team_create(request):
-    TeamForm = modelform_factory(Team, fields='__all__')
+    team_widgets = {'name': TextInput(attrs={'placeholder': 'Team Name'}),
+                    'school': TextInput(attrs={'placeholder': 'School'})}
+    contestant_widgets = {'first_name': TextInput(attrs={'placeholder': 'First Name'}),
+                          'last_name': TextInput(attrs={'placeholder': 'Last Name'}),
+                          'email': TextInput(attrs={'placeholder': 'Email'})}
+    TeamForm = modelform_factory(Team, fields='__all__', widgets=team_widgets)
     ContestantFormSet = inlineformset_factory(Team, Contestant, fields='__all__',
-                                              max_num=3, min_num=1, can_delete=False)
+                                              max_num=3, min_num=1, can_delete=False,
+                                              widgets=contestant_widgets)
     if request.method == 'POST':
         team_form = TeamForm(request.POST, request.FILES)
         contestant_formset = ContestantFormSet(request.POST, request.FILES)
